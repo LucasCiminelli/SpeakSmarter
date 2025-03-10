@@ -19,13 +19,14 @@ return new class extends Migration
             $table->string("content_uri");
             $table->string("pdf_uri", 255);
             $table->unsignedBigInteger("level_id");
+            $table->boolean("is_free")->default(false);
             $table->timestamps();
 
             $table->foreign("level_id")
-            ->references("id")
-            ->on("levels")
-            ->onUpdate("cascade")
-            ->onDelete("cascade");
+                ->references("id")
+                ->on("levels")
+                ->onUpdate("cascade")
+                ->onDelete("cascade");
         });
     }
 
